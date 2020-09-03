@@ -2,6 +2,7 @@ package com.darkkazma.board.controller;
 
 import com.darkkazma.board.dto.BoardDto;
 import com.darkkazma.board.service.BoardService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -11,12 +12,13 @@ import java.util.List;
 @Controller
 public class BoardController {
 
-    private BoardService boardService;
-
-    public BoardController(BoardService boardServices){
-        this.boardService = boardServices;
+    // 생성자 주입 ( Constructor based Injection ) 방식
+    // Field injection 이나  Setter based Injection 를 사용할 경우
+    // NullPointException 방지, Field 의 final 선언 가능, 순환참조 방지등의 이점이 있음.
+    private final BoardService boardService;
+    public BoardController(BoardService boardService) {
+        this.boardService = boardService;
     }
-
 
     /** 초기화면 [존재하는 글의 목록을 가져온다. ] **/
     @GetMapping("/")

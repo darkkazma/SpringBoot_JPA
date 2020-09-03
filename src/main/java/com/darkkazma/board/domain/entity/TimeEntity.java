@@ -13,13 +13,14 @@ import java.time.LocalDateTime;
 @Getter
 @MappedSuperclass   // 테이블로 매핑하지 않고, 자식 Entity에게 매핑 정보를 상속하기 위한 어노테이션
 @EntityListeners(AuditingEntityListener.class)   //JPA에게 해당 Entity는 Auditing 기능을 사용한다는 것을 알리는 어노테이션
+
 public class TimeEntity {
 
-    @CreatedDate
+    @CreatedDate        // Entity 가 생성되어 저장될 때 시간이 자동으로 저장된다.
     @Column(updatable = false)
     private LocalDateTime createdDate;
 
-    @LastModifiedDate
+    @LastModifiedDate   // 조회한 Entity 의 값을 변경할 때 시간이 자동으로 저장된다.
     private LocalDateTime modifiedDate;
 
 }

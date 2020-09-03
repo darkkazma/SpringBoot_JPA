@@ -6,7 +6,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 import org.springframework.web.filter.HiddenHttpMethodFilter;
 
-@EnableJpaAuditing
+@EnableJpaAuditing              // JPA Auditing 을 활성화 하기 위한 어노테이션
 @SpringBootApplication
 public class BoardApplication {
 
